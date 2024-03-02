@@ -1,39 +1,64 @@
 #include <iostream>
+#include <string>
+
+class User{
+protected:
+	std::string _login;
+	int _pass;
+//	std::string _name;
+	int _length;
+	std::string* _userList{};
+public:
+	User() = default;
+	User(int length) : _length(length) {
+		_userList = new std::string[_length]{};
+	}
+	User(std::string login, int pass) : _login(login), _pass(pass){};
+//	~User(){
+//		delete[] _userList;
+//	}
+
+	void Show(){
+		std::cout << _login << " " << _pass << std::endl;
+	}
+};
 
 int main(){
-	int rows = 5; // количество пользователей
-	const int columns = 2; // pair user:password 
+	User* list[10];	
+	int userCount = 0;
 
-	std::string** usersList = new std::string*[rows]; // динамический двумерный массив
-	for(int i = 0; i < rows; i++){
-		usersList[i] = new std::string[columns];
+	std::string login;
+	int pass;
+	
+	bool a = true;
+
+	while(a){
+		char choice;
+		std::cout << "добавить пользователя? " << std::endl;
+		std::cin >> choice;
+		switch (choice){
+			case 'y':
+				userCount += 1;
+				std::cout << "Придумайте логин и пароль: " << std::endl;
+				std::cin >> login >> pass;
+				list[userCount - 1] = new User(login, pass);
+				break;
+			case 'n':
+				a = false;
+				break;
+			default:
+				std::cout << "неверное значение" << std::endl;
+				break;
+		}
+	}
+
+	std::cout << "список пользователей:" << std::endl;
+	for(int i = 0; i < userCount; i++){
+		list[i]->Show();
 	}
 	
-	for(int i = 0; i < rows; i++){
-		for(int j = 0; j < columns; j++){
-			if(j == 0){
-				usersList[i][j] = "login";
-				std::cout << usersList[i][j] << " ";
-			}
-			else if(j == 1){
-				usersList[i][j] = "pass";
-				std::cout << usersList[i][j] << " ";
-			}
-		}
-		std::cout << std::endl;
-	}
-
-	char a[20]; 
-	std::string b;
-	std::string c;
-
-	std::cin.getline(a, 20);
-
-	if(a[0] == 'a'){
-		std::cout << "добавить" << std::endl;
-	}
-	else{
-		std::cout << "John: " << a << b << c << std::endl;
+	for(int i = 0; i < userCount; i++){
+		delete list[i];
 	}
 
 	return 0;
