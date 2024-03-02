@@ -1,40 +1,38 @@
-#include <iostream>
+﻿#include <iostream>
+#include "Users.h"
+using namespace std;
 
-int main(){
-	int rows = 5; // количество пользователей
-	const int columns = 2; // pair user:password 
+int main()
+{
+    setlocale(LC_ALL, "");
+    
+    IUser* users[3];
 
-	std::string** usersList = new std::string*[rows]; // динамический двумерный массив
-	for(int i = 0; i < rows; i++){
-		usersList[i] = new std::string[columns];
-	}
-	
-	for(int i = 0; i < rows; i++){
-		for(int j = 0; j < columns; j++){
-			if(j == 0){
-				usersList[i][j] = "login";
-				std::cout << usersList[i][j] << " ";
-			}
-			else if(j == 1){
-				usersList[i][j] = "pass";
-				std::cout << usersList[i][j] << " ";
-			}
-		}
-		std::cout << std::endl;
-	}
+    users[0] = new User("Joe", "joe", "123");
+    users[1] = new User("Max", "max", "qwerty");
+    
+    string lg, nm, pas;
 
-	char a[20]; 
-	std::string b;
-	std::string c;
+    cout << "Введите логин: " << endl;
+    cin >> lg;
+    cout << "Введите пароль: " << endl;
+    cin >> pas;
+    cout << "Придумайте имя: " << endl;
+    cin >> nm;
+    users[2] = new User(lg, pas, nm);
+    cout << endl;
 
-	std::cin.getline(a, 20);
+    cout << "Все пользователи чата: " << endl;
+    cout << endl;
+    users[0] -> Show();
+    cout << endl;
+    users[1] -> Show();
+    cout << endl;
+    users[2] -> Show();
 
-	if(a[0] == 'a'){
-		std::cout << "добавить" << std::endl;
-	}
-	else{
-		std::cout << "John: " << a << b << c << std::endl;
-	}
+    delete users[0];
+    delete users[1];
+    delete users[2];
 
-	return 0;
+    return 0;
 }
