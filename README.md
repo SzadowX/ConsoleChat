@@ -1,3 +1,3 @@
 # ConsoleChat
 
-hello
+Chat setup
