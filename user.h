@@ -1,30 +1,41 @@
 #pragma once
+#include <iostream>
+#include <string>
+#include "iUser.h"
 
-template<typename T>
-class User{
-private:
-	string _login; // логин
-	string _pass; // пароль
-	string _name; // имя
-	string _usersList; // двумерный массив пользователей ключ:значение
+class User : virtual public iUser{
+protected:
+	std::string _login;
+	int _pass;
 public:
-	User(){}
-	
-	void addUser(string name, char pass){} // добавить п
-//	void delUser(string name, char pass){} // удалить п
-//	void showUser(string name){} // инфа о пользователе
-	string listUsers(){} // список пользователей
+	User() = default;
+	User(std::string login) : _login(login){};
+	User(std::string login, int pass) : _login(login), _pass(pass){};
+
+	void Show(){
+		std::cout << _login << " " << _pass << std::endl;
+	}
+
+	bool AuthCheck(std::string l, int p){
+		if(l == this->_login && p == this->_pass){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	std::string userName(){
+		return this->_login;
+	}
 };
 
-template<typename T>
-class Message{
+class Msg : public User{
 private:
-	string _user; // пользователь
-//	string _time; // время отправки
-	string _body; // тело сообщения
-	string _history; // массив
+	std::string _body;
 public:
-	void sendMsg(){}
-	void showHist(){}
-
+	Msg(std::string login, std::string body) : User(login), _body(body){}; 
+	void Show(){
+		std::cout << _login << ": " << _body << std::endl;
+	}
 };
