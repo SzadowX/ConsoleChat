@@ -1,34 +1,38 @@
 ﻿#include <iostream>
-#include "Users.h"
+#include "Chat.h"
 using namespace std;
 
 int main()
 {
     setlocale(LC_ALL, "");
     
-    IUser* users[3];
+    IChat* users[3];
+    Chat* chat{};
 
-    users[0] = new User("Joe", "joe", "123");
-    users[1] = new User("Max", "max", "qwerty");
+    users[0] = new Users("Joe", "joe", "123");
+    users[1] = new Users("Max", "max", "qwerty");
     
     string lg, nm, pas;
-    char val;
-    cin >> val;
+    char key;
 
-    switch (val)
+    cout << "Введите ключ: r - для регистрации, l - для авторизации, q - для выхода из аккаунта" << endl;
+    cin >> key;
+
+    switch (key)
     {
     case 'r':
-        cout << "Введите логин: " << endl;
-        cin >> lg;
-        cout << "Введите пароль: " << endl;
-        cin >> pas;
-        cout << "Придумайте имя: " << endl;
-        cin >> nm;
-        users[2] = new User(lg, pas, nm);
+        chat->SignIn();
+        users[2] = new Users(lg, pas, nm);
         cout << endl;
+    case 'l':
+        chat->LogIn();
+    case 'q':
+        chat->LogOut();
     default:
-        break;
+        cout << "Вы ввели неверный ключ" << endl;
+        cin >> key;
     }
+    
 
     cout << "Все пользователи чата: " << endl;
     cout << endl;
