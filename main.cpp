@@ -12,15 +12,23 @@ int main()
     users[1] = new User("Max", "max", "qwerty");
     
     string lg, nm, pas;
+    char val;
+    cin >> val;
 
-    cout << "Введите логин: " << endl;
-    cin >> lg;
-    cout << "Введите пароль: " << endl;
-    cin >> pas;
-    cout << "Придумайте имя: " << endl;
-    cin >> nm;
-    users[2] = new User(lg, pas, nm);
-    cout << endl;
+    switch (val)
+    {
+    case 'r':
+        cout << "Введите логин: " << endl;
+        cin >> lg;
+        cout << "Введите пароль: " << endl;
+        cin >> pas;
+        cout << "Придумайте имя: " << endl;
+        cin >> nm;
+        users[2] = new User(lg, pas, nm);
+        cout << endl;
+    default:
+        break;
+    }
 
     cout << "Все пользователи чата: " << endl;
     cout << endl;
