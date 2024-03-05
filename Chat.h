@@ -6,6 +6,14 @@ class Users : virtual public IChat
 public:
 	Users(string login, string password, string name);
 	void Show() override;
+	bool AuthCheck(string l, string p) {
+		if (l == this->_login && p == this->_password) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 protected:
 	string _login;
 	string _password;
@@ -18,9 +26,6 @@ public:
 	void SignIn();
 	void LogIn();
 	void LogOut();
-protected:
-	string _login;
-	string _password;
-	string _name;
+	static bool isLogin;
 };
 

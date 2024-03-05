@@ -4,8 +4,6 @@ using namespace std;
 
 Users::Users(string name, string login, string password) : _login(login), _password(password), _name(name) {}
 
-static bool isLogin = false;
-
 void Users::Show()
 {
 	cout << "User name: " << _name << endl;
@@ -15,12 +13,13 @@ void Users::Show()
 
 void Chat::SignIn() 
 {
+    string lg, pas, nm;
     cout << "Введите логин: " << endl;
-    cin >> this->_login;
+    cin >> lg;
     cout << "Введите пароль: " << endl;
-    cin >> this->_password;
+    cin >> pas;
     cout << "Придумайте имя: " << endl;
-    cin >> this->_name;
+    cin >> nm;
     cout << "Вы успешно зарегистрировались" << endl;
 }
 
@@ -39,20 +38,11 @@ void Chat::LogIn()
         cout << "Вы уже авторизированы" << endl;
     }
 
-    if (lg == this->_login && pas == this->_password)
-    {
-        cout << "Вы успешно авторизовались" << endl;
-        isLogin = true;
-    }
-    else
-    {
-        cout << "Вы ввели неверный логин или пароль" << endl;
-    }
 }
 
 void Chat::LogOut()
 {
-    if (isLogin)
+    if (isLogin == true)
     {
         isLogin = false;
         cout << "Вы вышли из системы" << endl;
