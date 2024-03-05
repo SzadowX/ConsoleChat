@@ -1,3 +1,0 @@
-# ConsoleChat
-
-hello
