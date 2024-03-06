@@ -6,36 +6,35 @@
 class User : virtual public iUser{
 protected:
 	std::string _login;
-	int _pass;
+	std::string _pass;
+	std::string _name;
 public:
 	User() = default;
 	User(std::string login) : _login(login){};
-	User(std::string login, int pass) : _login(login), _pass(pass){};
+	User(std::string login, std::string pass) : _login(login), _pass(pass){};
+	User(std::string login, std::string pass, std::string name) : _login(login), _pass(pass), _name(name){};
 
-	void Show(){
-		std::cout << _login << " " << _pass << std::endl;
-	}
+	void Show(); // вывод логина и пароля +
+	bool AuthCheck(std::string l, std::string p); // проверка логина и пароля при входе +
+	std::string userName(); // возвращает логин +
+	void getUser(); // вывод логина и имени -
+	void setName(std::string n); // добавление или изменение имени -
+	void changePass(); // изменение пароля -
+	void changeLogin(); // изменение логина -
+};
 
-	bool AuthCheck(std::string l, int p){
-		if(l == this->_login && p == this->_pass){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-
-	std::string userName(){
-		return this->_login;
-	}
+class Chat : public User{
+private:
+public:
+	void signIn(); // регистрация -
+	void logIn(); // вход -
+	void logOut(); // выход -
 };
 
 class Msg : public User{
 private:
-	std::string _body;
+	std::string _body; // тело сообщения
 public:
 	Msg(std::string login, std::string body) : User(login), _body(body){}; 
-	void Show(){
-		std::cout << _login << ": " << _body << std::endl;
-	}
+	void Show(); // вывод пары автор:сообщение 
 };
