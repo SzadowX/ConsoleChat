@@ -101,8 +101,17 @@ void UserList::logIn(){ // вход пользователя в систему
 		std:: cout << "Превышел лимит попыток! Повторите позже!" << std::endl;
 	}
 	
-	for(int i = 0; i < _length; i++) // переход в режим ввода сообщений пользователем
+	for(int i = 0; i < _length; i++){ // переход в режим ввода сообщений пользователем
 		while(_userlist[i].getStatus()){
 			_userlist[i].userTyping();
+//			std::string msg_body;
+//			std::cout << _userlist[i].getLogin() << ": ";
+//			std::getline(std::cin, msg_body);
+
+//			if(msg_body == "quit"){
+//				std::cout << "Пользователь вышел из чата" << std::endl;
+//				logOut();
+//			}	
 		}
+	}
 }

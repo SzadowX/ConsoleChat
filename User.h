@@ -2,11 +2,12 @@
 #include <iostream>
 #include <string>
 #include <algorithm> // для std::copy_n
+// #include "Msg.h"
 
 // класс пользователя
 
 class User{
-private:
+protected:
 	std::string _login{}; // логин
 	std::string _pass{}; // пароль
 	std::string _name{}; // имя
@@ -17,6 +18,9 @@ public:
 	User(std::string login) : _login(login){};
 	User(std::string login, std::string pass) : _login(login), _pass(pass){};
 	User(std::string login, std::string pass, bool status) : _login(login), _pass(pass), _status{status}{};
+	
+	std::string _msgh;
+
 	// методы класса пользователя
 	// геттеры и возврат данных
 
@@ -32,4 +36,3 @@ public:
 	void logOut(); // выход пользователя из чата
 	void userTyping(); // ввод сообщений (нужно доработать)
 };
-

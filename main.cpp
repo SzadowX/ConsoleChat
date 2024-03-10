@@ -16,7 +16,7 @@ int main(){
 
 	bool running = true;
 	while(running){
-		std::cout << "check check check" << std::endl;
+		std::cout << "Главное меню: ";
 		char choice;
 		std::cin >> choice;
 		

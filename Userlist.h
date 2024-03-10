@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <algorithm> // для std::copy_n
@@ -15,6 +16,7 @@ public:
 		_userlist = new User[_length]{};
 		_userlist[0] = User(std::string("admin"),std::string("admin"), false); // создание одного пользователя (админа)
 	}
+	
 	~UserList(){
 		delete[] _userlist;
 	}

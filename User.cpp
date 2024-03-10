@@ -36,7 +36,7 @@ void User::logOut(){ // выход пользователя из чата
 }
 
 void User::userTyping(){ // ввод сообщений
-	while(true){
+//	while(true){
 		std::string msg_body;
 		std::cout << _login << ": ";
 		std::getline(std::cin, msg_body);
@@ -44,14 +44,10 @@ void User::userTyping(){ // ввод сообщений
 		if(msg_body == "quit"){
 			std::cout << "Пользователь вышел из чата" << std::endl;
 			logOut();
-			break;
+//			break;
 		}	
-	//	else{
-	//		if(msgCount < 10){
-	//			msgCount += 1;
-	//			msgHistory[msgCount - 1] = new Msg(userList[i]->userName(), msg_body);	
-	//		}
-	//		else if(msgCount >= 10){}
-	//	}
-	}
+		else{
+		}
+//	}
 }
+
