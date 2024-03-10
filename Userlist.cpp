@@ -103,15 +103,44 @@ void UserList::logIn(){ // вход пользователя в систему
 	
 	for(int i = 0; i < _length; i++){ // переход в режим ввода сообщений пользователем
 		while(_userlist[i].getStatus()){
-			_userlist[i].userTyping();
-//			std::string msg_body;
-//			std::cout << _userlist[i].getLogin() << ": ";
-//			std::getline(std::cin, msg_body);
+//			_userlist[i].userTyping();
+			std::string msg_body;
+			std::cout << _userlist[i].getLogin() << ": ";
+			std::getline(std::cin, msg_body);
 
-//			if(msg_body == "quit"){
-//				std::cout << "Пользователь вышел из чата" << std::endl;
-//				logOut();
-//			}	
+			if(msg_body == "quit"){
+				std::cout << "Пользователь вышел из чата" << std::endl;
+				logOut(i);
+			}	
+			else{
+				addMsg(_userlist[i].getLogin(), msg_body);
+			}
 		}
 	}
+}
+
+void UserList::logOut(int n){ // выход пользователя из чата
+	_userlist[n].setStatus(false);
+}
+
+void UserList::addMsg(std::string l, std::string m){
+	resizeMsgList(_count + 1);
+	_msglist[_count - 1] = Msg(l, m);
+}
+
+void UserList::getMsgs(){
+	for(int i = 0; i < _count; i++){
+		_msglist[i].showMsg();
+	}
+}
+
+void UserList::resizeMsgList(int newCount){ // изменение размера объекта массива пользователей
+    Msg* _msglisttemp{ new Msg[newCount] }; // создаем временный массив
+    if(_count > 0){
+        int elementsToCopy{ (newCount > _count) ? _count : newCount };
+        std::copy_n(_msglist, elementsToCopy, _msglisttemp); // копируем эл
+        delete[] _msglist; // удаляем старый массив
+        _msglist = _msglisttemp; // используем новый массив вместо старого; имя старого указывает на новый
+        _count = newCount;
+    }
 }
