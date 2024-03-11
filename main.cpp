@@ -58,14 +58,6 @@ int main()
         }
         //system("cls");
     }
-    
-    cout << "Все пользователи чата: " << endl;
-    cout << endl;
-    users[0] -> Show();
-    cout << endl;
-    users[1] -> Show();
-    cout << endl;
-    users[2] -> Show();
 
     delete users[0];
     delete users[1];
