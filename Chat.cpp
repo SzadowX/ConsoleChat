@@ -7,13 +7,13 @@ Users::Users(string name, string login, string password) : _login(login), _passw
 void Chat::SignIn() 
 {
     string lg, pas, nm;
-    cout << "Ââåäèòå ëîãèí: " << endl;
+    cout << "Введите логин: " << endl;
     cin >> lg;
-    cout << "Ââåäèòå ïàðîëü: " << endl;
+    cout << "Введите пароль: " << endl;
     cin >> pas;
-    cout << "Ïðèäóìàéòå èìÿ: " << endl;
+    cout << "Придумайте имя: " << endl;
     cin >> nm;
-    cout << "Âû óñïåøíî çàðåãèñòðèðîâàëèñü" << endl;
+    cout << "Вы успешно зарегистрировались" << endl;
 }
 
 void Chat::LogIn()
@@ -21,14 +21,14 @@ void Chat::LogIn()
     string lg, pas;
     if (isLogin == false)
     {
-        cout << "Ââåäèòå ëîãèí: " << endl;
+        cout << "Введите логин: " << endl;
         cin >> lg;
-        cout << "Ââåäèòå ïàðîëü: " << endl;
+        cout << "Введите пароль: " << endl;
         cin >> pas;
     }
     else
     {
-        cout << "Âû óæå àâòîðèçèðîâàíû" << endl;
+        cout << "Вы уже авторизированы" << endl;
     }
 
 }
@@ -38,10 +38,10 @@ void Chat::LogOut()
     if (isLogin == true)
     {
         isLogin = false;
-        cout << "Âû âûøëè èç ñèñòåìû" << endl;
+        cout << "Вы вышли из системы" << endl;
     }
     else
     {
-        cout << "Âû åù¸ íå àâòîðèçîâàëèñü" << endl;
+        cout << "Вы ещё не авторизовались" << endl;
     }
 }
