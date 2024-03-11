@@ -8,7 +8,7 @@ int main()
     
     Users* users[3];
     Chat* chat{};
-    int userCount = 3;
+    int userCount = 2;
 
     users[0] = new Users("Joe", "joe", "123");
     users[1] = new Users("Max", "max", "qwerty");
