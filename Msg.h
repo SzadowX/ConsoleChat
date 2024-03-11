@@ -1,17 +1,19 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "User.h"
+//#include "User.h"
 
 // класс сообщений
 
-class Msg : public User{
+class Msg{
 private:
 	std::string _msg;
+	std::string _login;
 public:
 	Msg(){};
 	Msg(std::string msg) : _msg(msg){};
-	Msg(std::string login, std::string msg) : User(login), _msg(msg){};
+//	Msg(std::string login, std::string msg) : User(login), _msg(msg){};
+	Msg(std::string login, std::string msg) : _login(login), _msg(msg){};
 	
 	void showMsg(); // вывод логина и пароля и статуса
 };

@@ -4,6 +4,13 @@
 
 void User::getUser(){ // вывод логина и пароля и статуса
 	std::cout << _login << " " << _pass << " " << statusInfo() << std::endl;
+	showAllMsg();
+}
+
+void User::showAllMsg(){
+	for(int i = 0; i < _msgcount; i++){
+		_msglist1[i].showMsg();	
+	}
 }
 
 void User::setStatus(bool s){ // вывод статуса

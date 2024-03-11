@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm> // для std::copy_n
-// #include "Msg.h"
+#include "Msg.h"
 
 // класс пользователя
 
@@ -12,15 +12,22 @@ protected:
 	std::string _pass{}; // пароль
 	std::string _name{}; // имя
 	bool _status{}; // статус online/offline
+	int _msgcount{1}; // счетчик сообщений
+	Msg *_msglist1{}; // объект массива сообщений пользователя (доделать)
 public:
 	// конструкторы объекта пользователя
 	User(){};
 	User(std::string login) : _login(login){};
 	User(std::string login, std::string pass) : _login(login), _pass(pass){};
-	User(std::string login, std::string pass, bool status) : _login(login), _pass(pass), _status{status}{};
+//	User(std::string login, std::string pass, bool status) : _login(login), _pass(pass), _status{status}{};
+	User(std::string login, std::string pass, bool status){
+		_login = login;
+		_pass = pass;
+		_status = status;
+		_msglist1 = new Msg[_msgcount]{}; // массив сообщений
+		_msglist1[0] = Msg(std::string("Default"), std::string("Welcome!"));	
+	};
 	
-	std::string _msgh;
-
 	// методы класса пользователя
 	// геттеры и возврат данных
 
@@ -35,4 +42,6 @@ public:
 
 	void logOut(); // выход пользователя из чата
 	void userTyping(); // ввод сообщений (нужно доработать)
+
+	void showAllMsg();
 };
