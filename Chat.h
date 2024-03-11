@@ -5,7 +5,6 @@ class Users : virtual public IChat
 {
 public:
 	Users(string login, string password, string name);
-	void Show() override;
 	bool AuthCheck(string l, string p) {
 		if (l == this->_login && p == this->_password) {
 			return true;
