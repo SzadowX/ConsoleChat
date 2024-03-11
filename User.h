@@ -25,7 +25,7 @@ public:
 		_pass = pass;
 		_status = status;
 		_msglist1 = new Msg[_msgcount]{}; // массив сообщений
-		_msglist1[0] = Msg(std::string("Default"), std::string("Welcome!"));	
+		_msglist1[0] = Msg(_login, std::string("Welcome!"));	
 	};
 	
 	// методы класса пользователя

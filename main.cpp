@@ -7,6 +7,9 @@ void userHelp(){
 }
 
 int main(){
+
+	setlocale(LC_ALL, "RU");
+
 	UserList userList(1, 1); // создание объекта массива пользователей
 	
 	std::cout << "Добро пожаловать в чат" << std::endl;
