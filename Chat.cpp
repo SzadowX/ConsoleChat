@@ -4,23 +4,16 @@ using namespace std;
 
 Users::Users(string name, string login, string password) : _login(login), _password(password), _name(name) {}
 
-void Users::Show()
-{
-	cout << "User name: " << _name << endl;
-	cout << "User login: " << _login << endl;
-	cout << "User password: " << _password << endl;
-}
-
 void Chat::SignIn() 
 {
     string lg, pas, nm;
-    cout << "Ââåäèòå ëîãèí: " << endl;
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã«Ã®Ã£Ã¨Ã­: " << endl;
     cin >> lg;
-    cout << "Ââåäèòå ïàðîëü: " << endl;
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¯Ã Ã°Ã®Ã«Ã¼: " << endl;
     cin >> pas;
-    cout << "Ïðèäóìàéòå èìÿ: " << endl;
+    cout << "ÃÃ°Ã¨Ã¤Ã³Ã¬Ã Ã©Ã²Ã¥ Ã¨Ã¬Ã¿: " << endl;
     cin >> nm;
-    cout << "Âû óñïåøíî çàðåãèñòðèðîâàëèñü" << endl;
+    cout << "Ã‚Ã» Ã³Ã±Ã¯Ã¥Ã¸Ã­Ã® Ã§Ã Ã°Ã¥Ã£Ã¨Ã±Ã²Ã°Ã¨Ã°Ã®Ã¢Ã Ã«Ã¨Ã±Ã¼" << endl;
 }
 
 void Chat::LogIn()
@@ -28,14 +21,14 @@ void Chat::LogIn()
     string lg, pas;
     if (isLogin == false)
     {
-        cout << "Ââåäèòå ëîãèí: " << endl;
+        cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã«Ã®Ã£Ã¨Ã­: " << endl;
         cin >> lg;
-        cout << "Ââåäèòå ïàðîëü: " << endl;
+        cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¯Ã Ã°Ã®Ã«Ã¼: " << endl;
         cin >> pas;
     }
     else
     {
-        cout << "Âû óæå àâòîðèçèðîâàíû" << endl;
+        cout << "Ã‚Ã» Ã³Ã¦Ã¥ Ã Ã¢Ã²Ã®Ã°Ã¨Ã§Ã¨Ã°Ã®Ã¢Ã Ã­Ã»" << endl;
     }
 
 }
@@ -45,10 +38,10 @@ void Chat::LogOut()
     if (isLogin == true)
     {
         isLogin = false;
-        cout << "Âû âûøëè èç ñèñòåìû" << endl;
+        cout << "Ã‚Ã» Ã¢Ã»Ã¸Ã«Ã¨ Ã¨Ã§ Ã±Ã¨Ã±Ã²Ã¥Ã¬Ã»" << endl;
     }
     else
     {
-        cout << "Âû åù¸ íå àâòîðèçîâàëèñü" << endl;
+        cout << "Ã‚Ã» Ã¥Ã¹Â¸ Ã­Ã¥ Ã Ã¢Ã²Ã®Ã°Ã¨Ã§Ã®Ã¢Ã Ã«Ã¨Ã±Ã¼" << endl;
     }
 }
