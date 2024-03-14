@@ -4,25 +4,18 @@
 
 void User::getUser(){ // вывод логина и пароля и статуса
 	std::cout << _login << " " << _pass << " " << statusInfo() << std::endl;
-	showAllMsg();
-}
-
-void User::showAllMsg(){
-	for(int i = 0; i < _msgcount; i++){
-		_msglist1[i].showMsg();	
-	}
-}
-
-void User::setStatus(bool s){ // вывод статуса
-	this->_status = s;
 }
 
 std::string User::getLogin(){ // возврат логина
-	return _login;
+	return this->_login;
 }
 
 std::string User::getPass(){ // возврат пароля
-	return _pass;
+	return this->_pass;
+}
+
+void User::setStatus(bool s){ // изменение статуса
+	this->_status = s;
 }
 	
 bool User::getStatus(){ // возврат статуса (системный)
@@ -42,6 +35,7 @@ void User::logOut(){ // выход пользователя из чата
 	_status = false;
 }
 
+/*
 void User::userTyping(){ // ввод сообщений
 //	while(true){
 		std::string msg_body;
@@ -57,4 +51,4 @@ void User::userTyping(){ // ввод сообщений
 		}
 //	}
 }
-
+*/
