@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include <algorithm> // для std::copy_n
-//#include "Msg.h"
 
 // класс пользователя
 
@@ -38,12 +37,4 @@ public:
 	// функции для работы с пользователем
 
 	void logOut(); // выход пользователя из чата
-//	void userTyping(); // ввод сообщений (нужно доработать) (не актуально)
-
-	// функции для работу с сообщенями
-/*
-	void saveMsg(int i, int r, std::string m);
-	void syncMsg(int i);
-	void resizeMsg(int newLength); // изменение размера объекта массива пользователей
-*/
 };
