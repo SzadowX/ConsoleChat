@@ -1,6 +1,5 @@
 #pragma once
-//#ifndef INTARRAY_H
-//#define INTARRAY_H
+
 #include <iostream>
 using namespace std;
 #include <cstring>
@@ -41,8 +40,6 @@ public:
         delete[] m_data;
     }
 
-    
-
     //функция erase(),   сотрет массив и установит длину равной 0
     void erase()
     {
@@ -81,10 +78,11 @@ public:
         return m_data[index];
 
     }
-   
+  
     //вывод на консоль элементов массива
     void show(Talk<T>& a, int size)
     {
+        cout << endl << "на данный момент в чате зарегистрированы следующие пользователи:" << endl;
         for (int i = 0; i < size; ++i)
         {
             std::cout << a[i] << " ";
@@ -105,14 +103,18 @@ public:
         cout << endl;
         return;
     }
-    void show2(Talk<T>& a,  int size)
+    void show2(Talk<T>& a,  int size,string un)
     {
 
         cout << "На данный момент вам  поступили личные сообщения от следующих пользователей-->" << endl;
         for (int i = 0; i < size; ++i)
         {
-            std::cout << "#" << i+1<<" - от / " << a[i * 3] << " / для / " << a[i * 3 + 1] << "/ :'" << a[i * 3 + 2] << "',";
+            if (a[i * 3 + 1]==un)
+            {
+            std::cout << "#" << i+1<<" - от / " << a[i * 3 +1] << " / :'" << a[i * 3 + 2] << "',";
             std::cout << endl;
+            }
+           
         }
 
         cout << endl;
@@ -147,8 +149,8 @@ public:
     void Test_log_ins(Talk<T>& a)
     {
         a[0] = "Din";
-        a[1] = "Max";
-        a[2] = "Dot";
+        a[1] = "m";
+        a[2] = "l";
         return;
     }
     void Test_Com_messages(Talk<T>& a)
