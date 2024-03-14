@@ -34,21 +34,3 @@ std::string User::statusInfo(){ // возврат статуса (читабел
 void User::logOut(){ // выход пользователя из чата
 	_status = false;
 }
-
-/*
-void User::userTyping(){ // ввод сообщений
-//	while(true){
-		std::string msg_body;
-		std::cout << _login << ": ";
-		std::getline(std::cin, msg_body);
-
-		if(msg_body == "quit"){
-			std::cout << "Пользователь вышел из чата" << std::endl;
-			logOut();
-//			break;
-		}	
-		else{
-		}
-//	}
-}
-*/
