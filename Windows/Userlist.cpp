@@ -31,7 +31,7 @@ int UserList::getIndex(std::string l){ // поиск индекса пользо
 }
 		
 void UserList::setUser(){ // создание нового пользователя
-	system("clear");
+	system("cls");
 	while(true){
 		bool available{false}; // доступность логина
 		std::string _l{}, _p{}; // переменные для ввода логина и пароля
@@ -71,7 +71,7 @@ void UserList::logIn(){ // вход пользователя в систему
 	
 	/* вход пользователя */
 
-	system("clear");
+	system("cls");
 	int attempts = 3; // количество потыток входа(в данном случае 3)
 	std::string _l{}, _p{};
 	int i{};
@@ -96,7 +96,7 @@ void UserList::logIn(){ // вход пользователя в систему
 	/* переход в нужный диалог */
 
 	while(_userlist[i].getStatus()){
-		system("clear");
+		system("cls");
 		std::cout << "Введите имя собеседника:\n----------\nall (общий диалог)\n";
 		showUsers(); // список диалогов (пользователей)
 		std::cout << "----------\n";
