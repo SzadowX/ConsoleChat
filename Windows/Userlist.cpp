@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 #include <algorithm> // для std::copy_n
 #include "Userlist.h"
