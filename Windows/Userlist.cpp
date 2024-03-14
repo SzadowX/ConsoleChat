@@ -78,7 +78,10 @@ void UserList::logIn(){ // вход пользователя в систему
 	std::cout << "---------- Авторизация ----------\n";
 	while(attempts > 0){
 		std::cout << "Введите логин и пароль (у вас осталось " << attempts << " попытки): ";
-		std::cin >> _l >> _p;
+		std::cout << "Логин";
+		std::cin >> _l;
+		std::cout << "Пароль";
+		std::cin >> _p;
 			
 		if(authCheck(_l, _p)){
 			attempts = -1; // выход из цикла при успешной авторизации
