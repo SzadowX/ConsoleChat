@@ -15,8 +15,6 @@ int main(){
 	UserList userList(1, 1); // создание объекта массива пользователей
 	
 	cout << "---------- Добро пожаловать в чат ----------" << endl;
-	cout << "Для работы с программой используйте:\n";
-	userHelp();
 
 	bool running = true;
 	while(running){
