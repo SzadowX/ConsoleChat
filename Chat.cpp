@@ -19,7 +19,7 @@ int  main()
     // setlocale(0, "");
     char choice = '0'; char choice1 = '0'; char choice2 = '0'; char choice3; char choice4 = '0'; char choice5 = '0';
     Logged = false;
-    int num_Polzovat = 0;//счётчик пользователей
+    int num_Polzovat = 3;//счётчик пользователей
     int n = 20;//число ячеек в одномерном массиве
     int i1 = 0;//переменная для найденного элемента массива
     int i2 = 3;//счётчик общих сообщений
@@ -48,16 +48,14 @@ int  main()
         << endl << "вход в чат по логину/паролю" << endl << "отправка сообщений конкретному пользователю"
         << endl << "обмен сообщениями между всеми пользователями чата одновременно" << endl
         << "Примечание:  ввод информации разными пользователями осуществляется с одной клавиатуры" << endl;
-    // Common_messages.Test_C_messages(Common_messages);
-    // Common_messages.show(Common_messages, 5);
 
     while (choice1 == '0')
     {
-
+        User_Names.show(User_Names, num_Polzovat);
         cout << endl << "Клавиатура освободилась: Доступны опции: " << endl << "-----Регистрация в чате - введите: 1" << endl << "----->  Вход в чат:  2"
-            << endl << "<-----Выход из чата: 3 " << endl
-            << " -----При вводе /4/-на консоль вывводятся сообщения общего чата. " << endl
-            << " -----При вводе /5/-на консоль вывводятся сообщения личного чата " << endl << "Ваш выбор -->";
+            << endl << "<-----Выход из чата: 3 " << endl << "Ваш выбор-----> " <<endl;
+           // << " -----При вводе /4/-на консоль вывводятся сообщения общего чата. " << endl
+           // << " -----При вводе /5/-на консоль вывводятся сообщения личного чата " << endl << "Ваш выбор -->";
 
         cin >> choice;
         system("cls");//очищаем экран
@@ -68,11 +66,8 @@ int  main()
             User_Names.Register(User_Names, num_Polzovat, 'n');
             User_Logins.Register(User_Logins, num_Polzovat, 'l');
             Pass_words.Register(Pass_words, num_Polzovat, 'p');
-
             num_Polzovat = num_Polzovat + 1;//добавлен новый пользователь
-            cout << P_w << "на данный момент в чате зарегистрированы следующие пользователи:" << endl;
             User_Names.show(User_Names, num_Polzovat);
-
             break;
         case '2'://----Вход в чат
             //User_Names.Login();
@@ -81,6 +76,7 @@ int  main()
             cin >> u_log;
             cout << "Подтвердите свой login паролем: ";
             cin >> P_w;
+            choice2 = '0';
             for (int i = 0; i < n; i++)  // ищем соответствие в массивах имён и паролей
             {
                 if ((User_Logins[i] == u_log) && (Pass_words[i] == P_w))
@@ -91,7 +87,7 @@ int  main()
                     choice2 = '1';
                 }
             }
-            choice2 = '1';//**Test1
+           
             if (choice2 == '1')
             {
                 choice4 = '1';
@@ -99,12 +95,13 @@ int  main()
                 std::cin.ignore();
                 while (choice4 == '1')
                 {
+
                     Common_messages.show1(Common_messages, i2);
                     cout << " -  Введите текст нового сообщения: " << endl;
                     std::cin.clear();
                     getline(std::cin, mas);
                     system("cls");//очищаем экран
-                    cout << " -  Если сообщение предназначено для всех пользователей-введите /1/.При вводе /2/-это сообщение сможет прочитать только один адресат: " << endl;
+                    cout << " -  Если сообщение предназначено для всех пользователей-введите /1/.При вводе /2/-!ваше сообщение сможет прочитать только один адресат: " << endl;
 
                     cin >> choice3;
 
@@ -116,15 +113,26 @@ int  main()
                         Common_messages[i2 * 2 + 1] = mas;//текст сообщения
                         i2 = i2 + 1;
                         choice5 = '1';
-                        i1 = i1 + 1;
+                       // i1 = i1 + 1;
                         break;
                     case '2':
+                        User_Names.show(User_Names, num_Polzovat);
                         cout << " -  введите имя адресата для личного сообщения: " << endl;
                         cin >> na;
-                        Individual_messages[i3 * 3] = un;//имя отправителя сообщения
-                        Individual_messages[i3 * 3 + 1] = na;//имя адресата
-                        Individual_messages[i3 * 3 + 2] = mas;//текст сообщения
-                        i3 = i3 + 1;
+                        for (int i = 0; i < n; i++)  // ищем соответствие в массивах имён и паролей
+                        {
+                            if (User_Names[i] == na)
+                            {
+                                Individual_messages[i3 * 3] = un;//имя отправителя сообщения
+                                Individual_messages[i3 * 3 + 1] = na;//имя адресата
+                                Individual_messages[i3 * 3 + 2] = mas;//текст сообщения
+                                i3 = i3 + 1;
+                                cout << " -  отправлено личное сообщение для : "<< na << endl;
+                                Individual_messages.show2(Individual_messages, i3, un);
+                               
+                            }
+                        }
+                       
                         break;
 
                     default:  //----обработка неправильного ввода при выборе опции при посылке сообщения
@@ -133,22 +141,22 @@ int  main()
                         break;
                     }
                     Common_messages.show1(Common_messages, i2);
-                    cout << " -  Написать ещё одно сообщение? введите /1/" << endl << " - Чтобы освободить клавиатуру для другого пользователя-любой другой символ. " << endl;
+                    cout << " -  Написать ещё одно сообщение? - Продолжить без просмотра личного чата-введите /1/" << endl;
+                    cout << " -  Отобразить для /" << un << "/ содержание личного чата - введите /2/" << endl;
+                      
+                    cout << " - Чтобы освободить клавиатуру для другого пользователя-любой другой символ. " << endl;
                     cin >> choice4;
 
-                    //Common_messages.show1(Common_messages,i2);
                     if (choice4 == '1')
                     {
-                        // Common_messages.show1(Common_messages, i2);
-                        choice5 = '0';
-                        cout << " -  Отобразить для /" << un << "/ содержание личного чата - введите /1/" << endl << " -  Продолжить без просмотра личного чата-любой другой символ. " << endl;
-                        cin >> choice5;
-                        if (choice5 == '1')
-                        {
-                            Individual_messages.show2(Individual_messages, i3);
-                        }
-
+                        system("cls");//очищаем экран  
                     }
+                    if (choice4 == '2')
+                    {
+                        Individual_messages.show2(Individual_messages, i3,un);
+                        choice4 = '1';
+                    }
+                   
                     else
                     {
                         system("cls");//очищаем экран
@@ -157,24 +165,18 @@ int  main()
                     }
                     std::cin.ignore();
                 }
-
-
                 choice2 = '0';
-
-
 
             }
             else
             {
                 cout << "Неверный пароль или пользовательское имя! Выбор не определён. Возврат в исходное меню -->" << endl;
             }
-
             break;
         case '3'://----Выход из  чата
             User_Names.Exit();
             choice1 = '1';
             break;
-
 
         case '4'://----Вывод на консоль вывводятся сообщения общего чата. 
             cout << " -  При вводе /4/-на консоль вывводятся сообщения общего чата. " << endl;
