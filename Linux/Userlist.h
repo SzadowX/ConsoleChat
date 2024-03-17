@@ -19,7 +19,7 @@ public:
 	
 	UserList(int length, int count) : _length(length), _count(count){
 		_userlist = new User[_length]{};
-		_userlist[0] = User(std::string("admin"),std::string("admin")); // создание одного пользователя (админа)
+		_userlist[0] = User(std::string("admin"),std::string("admin"),std::string ("админ")); // создание одного пользователя (админа)
 		_groupmsg = new Msg[_count]{};
 		_groupmsg[0] = Msg(_userlist[0].getLogin(), std::string("Welcome!"));
 	}

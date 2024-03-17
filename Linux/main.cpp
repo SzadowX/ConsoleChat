@@ -1,46 +1,46 @@
 #include <iostream>
 #include <string>
 #include "Userlist.h"
+using namespace std;
 
 void userHelp(){
-	std::cout << "1\tдля регистрации нового пользователя\n2\tдля входа в аккаунт\n3\tдля вывода списка пользователей\n4\tдля поиска пользователя по логину\n[h]elp\tдля вывода списка команд\n[q]uit\tдля выхода из программы" << std::endl;
+	cout << "[r]egistration\tдля регистрации нового пользователя\n[l]og in\tдля входа в аккаунт\n[c]atalog\tдля вывода списка пользователей\n[q]uit\tдля выхода из программы\n" << endl;
 }
 
 int main(){
 	UserList userList(1, 1); // создание объекта массива пользователей
 	
-	std::cout << "---------- Добро пожаловать в чат ----------" << std::endl;
-	std::cout << "Для работы с программой используйте:\n";
-	userHelp();
+	cout << "---------- Добро пожаловать в чат ----------" << endl;
 
 	bool running = true;
 	while(running){
-		std::cout << "Главное меню: ";
+		cout << "Для работы с программой используйте:\n";
+		userHelp();
+
+		cout << "Главное меню: ";
 		char choice;
-		std::cin >> choice;
+		cin >> choice; // выбор действий пользователя
+		cin.ignore(256, '\n'); // игнорирование ввода символов после первого
 		
 		switch(choice){
-			case '1':
+			case 'r':
 				userList.setUser();
 				break;
-			case '2':
+			case 'l':
 				userList.logIn();
 				break;
-			case '3':
-				std::cout << "\nСписок пользователей:\n----------" << std::endl;
+			case 'c':
+				system("clear");
+				cout << "Список пользователей:\n----------\nлогин\tимя\tстатус\n";
 				userList.showUsers();
-				std::cout << "----------\n\n";
-				break;
-			case '4':
-				break;
-			case 'h':
-				userHelp();
+				cout << "----------\n\n";
 				break;
 			case 'q':
 				running = false;
 				break;
 			default:
-				std::cout << "Неверное значение!" << std::endl;
+				system("clear");
+				cout << "Неверное значение!\n";
 				break;
 		}
 	}
