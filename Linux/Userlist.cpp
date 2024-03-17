@@ -204,34 +204,34 @@ int UserList::getLength(){ // возврат количества пользов
 void UserList::saveMsg(int _i, int _ir, std::string _m){ // сохранение сообщений
 	if(_ir < 0){
 		resizeMsgList(_count + 1); // групповые сообщения
-		_groupmsg[_count - 1] = Msg(_userlist[_i].getLogin(), std::string("all"), _m);
+		_msglist[_count - 1] = Msg(_userlist[_i].getLogin(), std::string("all"), _m);
 	}
 	else{
 		resizeMsgList(_count + 1); // личка
-		_groupmsg[_count - 1] = Msg(_userlist[_i].getLogin(), _userlist[_ir].getLogin(), _m);
+		_msglist[_count - 1] = Msg(_userlist[_i].getLogin(), _userlist[_ir].getLogin(), _m);
 	}
 }
 
 void UserList::getMsgs(int _i, int _ir){ // вывод истории сообщений
 	if(_ir < 0){
 		for(int i = 0; i < _count; i++){ // групповые сообщения
-			_groupmsg[i].getGroup();
+			_msglist[i].getGroup();
 		}
 	}
 	else{
 		for(int i = 0; i < _count; i++){ // личка
-			_groupmsg[i].getPrivate(_userlist[_i].getLogin(), _userlist[_ir].getLogin());
+			_msglist[i].getPrivate(_userlist[_i].getLogin(), _userlist[_ir].getLogin());
 		}
 	}
 }
 
 void UserList::resizeMsgList(int newCount){ // изменение размера объекта массива сообщений
-    Msg* _groupmsgtemp{ new Msg[newCount] }; // создаем временный массив
+    Msg* _msglisttemp{ new Msg[newCount] }; // создаем временный массив
     if(_count > 0){
         int elementsToCopy{ (newCount > _count) ? _count : newCount };
-        std::copy_n(_groupmsg, elementsToCopy, _groupmsgtemp); // копируем эл
-        delete[] _groupmsg; // удаляем старый массив
-        _groupmsg = _groupmsgtemp; // используем новый массив вместо старого; имя старого указывает на новый
+        std::copy_n(_msglist, elementsToCopy, _msglisttemp); // копируем эл
+        delete[] _msglist; // удаляем старый массив
+        _msglist = _msglisttemp; // используем новый массив вместо старого; имя старого указывает на новый
         _count = newCount;
     }
 }

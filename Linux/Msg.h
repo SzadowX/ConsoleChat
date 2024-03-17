@@ -7,8 +7,8 @@
 
 class Msg : public User{
 private:
-	std::string _recipient;
-	std::string _msg;
+	std::string _recipient; // адресат
+	std::string _msg; // сообщение
 public:
 	Msg(){};
 	Msg(std::string login, std::string msg) : User(login), _msg(msg){};
