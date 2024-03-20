@@ -111,7 +111,7 @@ void UserList::logIn(){ // вход пользователя в систему
 		
 		if(c == "quit"){ // выход из цикла (пользователя из системы)
 			std::cout << "----- Пользователь вышел из чата!\n" << std::endl;
-			logOut(i); // вызов выхода пользователя
+			logOut<int>(i); // вызов выхода пользователя
 			system("clear");
 		}
 		else if(c == "all"){ // переход в групповой чат
@@ -133,7 +133,7 @@ void UserList::logIn(){ // вход пользователя в систему
 	}
 }
 
-void UserList::logOut(int n){ // выход пользователя из чата
+template<typename T> void UserList::logOut(T n){ // выход пользователя из чата
 	_userlist[n].setStatus(false);
 }
 
@@ -149,7 +149,7 @@ void UserList::userTyping(int i, int j){ // блок ввода сообщени
 			break;
 		}
 		else{
-			saveMsg(i, j, msg_body); // сохранение адресанта:адресата:сообщения (личка)
+			saveMsg(i, j, msg_body); // сообщения в формате адресант:адресат:сообщения
 		}
 	}
 }
@@ -157,9 +157,11 @@ void UserList::userTyping(int i, int j){ // блок ввода сообщени
 /* Массив пользователей */
 
 void UserList::resize(int newLength){ // изменение размера объекта массива пользователей
+    if(newLength < 0){ std::cout << "Неверное значение размера массива!" << std::endl; } // ошибка размера массива
+    if(newLength == _length){ return; } // если соответствует нужному размеру
     User* _userlisttemp{ new User[newLength] }; // временный массив
-    if(_length > 0){
-        int elementsToCopy{ (newLength > _length) ? _length : newLength };
+    if(_length > 0){ // увеличение размера массива
+        int elementsToCopy{ (newLength > _length) ? _length : newLength }; // переменная для копирования
         std::copy_n(_userlist, elementsToCopy, _userlisttemp); // копирование элементов
         delete[] _userlist; // удаление старого массива
         _userlist = _userlisttemp; // новый массив вместо старого(имя старого указывает на новый)
@@ -204,8 +206,10 @@ void UserList::getMsgs(int _i, int _ir){ // вывод истории сообщ
 }
 
 void UserList::resizeMsgList(int newCount){ // изменение размера объекта массива сообщений
+    if(newCount < 0){ std::cout << "Неверное значение размера массива!" << std::endl; } // ошибка размера массива
+    if(newCount == _count){ return; } // если соответствует нужному размеру
     Msg* _msglisttemp{ new Msg[newCount] }; // создаем временный массив
-    if(_count > 0){
+    if(_count > 0){ // увеличение размера массива
         int elementsToCopy{ (newCount > _count) ? _count : newCount };
         std::copy_n(_msglist, elementsToCopy, _msglisttemp); // копируем элемент
         delete[] _msglist; // удаляем старый массив
