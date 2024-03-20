@@ -28,7 +28,7 @@ class UserList // класс списка пользователей чата
 /* сообщения */
 - void saveMsg(int _i, int _ir, std::string _m);
 - void getMsgs(int _i, int _ir);
-- void resizeMsgList(int newCount); // изменение размера объекта массива сообщений
+- void resizeMsgList(int newCount); // изменение размера объекта массива сообщений  
 class User // класс пользователя  
 В нём были реализован следующий  ряд  методов и   функций:
 - void getUser(); // вывод логина и пароля и статуса	
@@ -38,8 +38,8 @@ class User // класс пользователя
 - bool getStatus(); // возврат статуса (системный)
 - string statusInfo(); // возврат статуса (читабельный)
 
-class Msg /* класс сообщений */
-В нём были реализован следующий  ряд  методов и   функций:
+class Msg /* класс сообщений */  
+В нём были реализован следующий  ряд  методов и   функций:  
 - void getPrivate(std::string l, std::string r); // вывод личных сообщений
 - void getGroup(); // вывод групповых сообщений};
 
