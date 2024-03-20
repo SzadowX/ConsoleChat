@@ -2,9 +2,7 @@
 #include <string>
 #include <algorithm> // для std::copy_n
 #include "Userlist.h"
-
 /* Пользователь */
-
 bool UserList::authCheck(std::string l, std::string p) { // проверка логина и пароля - авторизация пользователя
 	for (int i = 0; i < _length; i++)
 		if (l == _userlist[i].getLogin()) {
@@ -19,7 +17,6 @@ bool UserList::authCheck(std::string l, std::string p) { // проверка логина и па
 	std::cout << "----- Неверный логин или пароль!\n" << std::endl;
 	return false;
 }
-
 int UserList::getIndex(std::string l) { // поиск индекса пользователя по имени
 	for (int i = 0; i < _length; i++) {
 		if (l == _userlist[i].getLogin()) {
@@ -29,7 +26,6 @@ int UserList::getIndex(std::string l) { // поиск индекса пользователя по имени
 	std::cout << "----- Пользователь не найден!\n" << std::endl;
 	return -1;
 }
-
 void UserList::setUser() { // создание нового пользователя
 	system("cls");//очищаем экран
 	std::cout << "---------- Регистрация нового пользователя ----------\n[q]uit для отмены\nЛогин и пароль не должны содержать пробелов\n";
@@ -57,7 +53,6 @@ void UserList::setUser() { // создание нового пользователя
 				available = true;
 			}
 		}
-
 		if (available) {
 			std::cout << "Введите пароль:  ";
 			std::cin >> _p;
@@ -68,16 +63,12 @@ void UserList::setUser() { // создание нового пользователя
             std::cout << "----- Пользователь " << _n << " зарегистрирован\n" << std::endl;
 			resize(_length + 1); // увеличение массива пользователей
 			_userlist[_length - 1] = User(_l, _p, _n); // создание нового объекта пользователя 
-			
 			break;
 		}
 	}
 }
-
 void UserList::logIn() { // вход пользователя в систему
-
 	/* вход пользователя */
-
 	system("cls");//очищаем экран
 	int attempts = 3; // количество потыток входа(в данном случае 3)
 	std::string _l{}, _p{};
@@ -88,18 +79,15 @@ void UserList::logIn() { // вход пользователя в систему
 		std::cout << "Логин: ";
 		std::cin >> _l;
 		std::cin.ignore(256, '\n'); // игнорирование слов после первого
-
 		if (_l == "q") { // отмена вызова
 			system("cls");//очищаем экран
 			std::cout << "----- Отмена авторизации\n" << std::endl;
 			attempts = -1; // выход из цикла при отмене авторизации
 			break;
 		}
-
 		std::cout << "Пароль: ";
 		std::cin >> _p;
 		std::cin.ignore(256, '\n'); // игнорирование слов после первого
-
 		if (authCheck(_l, _p)) {
 			attempts = -1; // выход из цикла при успешной авторизации
 			i = getIndex(_l);
@@ -109,13 +97,10 @@ void UserList::logIn() { // вход пользователя в систему
 			attempts--; // уменьшение кол-ва попыток при ошибке в логине или пароле
 		}
 	}
-
 	if (attempts == 0) { // ошибка авторизации
 		std::cout << "----- Превышен лимит попыток!\n" << std::endl;
 	}
-
 	/* переход в нужный диалог */
-
 	while (_userlist[i].getStatus()) {
 		std::cout << "Введите имя собеседника:\n----------\nall\t(общий диалог)\n";
 		showUsers(); // список диалогов (пользователей)
@@ -125,7 +110,6 @@ void UserList::logIn() { // вход пользователя в систему
 		std::cin >> c; // имя получателя
 		std::cin.ignore(); // игнорирование символа после cin, чтобы getline не считывал пустое значение
 		int ir; // индекс получателя
-
 		if (c == "q") { // выход из цикла (пользователя из системы)
 			system("cls");//очищаем экран
 			logOut(i); // вызов выхода пользователя
@@ -154,11 +138,9 @@ void UserList::logIn() { // вход пользователя в систему
 		}
 	}
 }
-
 void UserList::logOut(int n) { // выход пользователя из чата
 	_userlist[n].setStatus(false);
 }
-
 void UserList::userTyping(int i, int j) { // блок ввода сообщений
 	while (_userlist[i].getStatus()) {
 		std::string msg_body; // тело сообщения
@@ -175,9 +157,7 @@ void UserList::userTyping(int i, int j) { // блок ввода сообщений
 		}
 	}
 }
-
 /* Массив пользователей */
-
 void UserList::resize(int newLength) { // изменение размера объекта массива пользователей
 	User* _userlisttemp{ new User[newLength] }; // временный массив
 	if (_length > 0) {
@@ -188,19 +168,15 @@ void UserList::resize(int newLength) { // изменение размера объекта массива поль
 		_length = newLength;
 	}
 }
-
 void UserList::showUsers() { // вывод списка пользователей
 	for (int i = 0; i < _length; i++) {
 		_userlist[i].getUser();
 	}
 }
-
 int UserList::getLength() { // возврат количества пользователей (равно размеру массива)
 	return _length;
 }
-
 /* Cообщения */
-
 void UserList::saveMsg(int _i, int _ir, std::string _m) { // сохранение сообщений
 	if (_ir < 0) {
 		resizeMsgList(_count + 1); // групповые сообщения
@@ -211,7 +187,6 @@ void UserList::saveMsg(int _i, int _ir, std::string _m) { // сохранение сообщени
 		_msglist[_count - 1] = Msg(_userlist[_i].getLogin(), _userlist[_ir].getLogin(), _m);
 	}
 }
-
 void UserList::getMsgs(int _i, int _ir) { // вывод истории сообщений
 	if (_ir < 0) {
 		for (int i = 0; i < _count; i++) { // групповые сообщения
@@ -224,7 +199,6 @@ void UserList::getMsgs(int _i, int _ir) { // вывод истории сообщений
 		}
 	}
 }
-
 void UserList::resizeMsgList(int newCount) { // изменение размера объекта массива сообщений
 	Msg* _msglisttemp{ new Msg[newCount] }; // создаем временный массив
 	if (_count > 0) {

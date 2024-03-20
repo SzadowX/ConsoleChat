@@ -2,9 +2,7 @@
 #include <iostream>
 #include <string>
 #include "User.h"
-
 /* класс сообщений */
-
 class Msg : public User {
 private:
 	std::string _recipient; // адресат
