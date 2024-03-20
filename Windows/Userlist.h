@@ -36,7 +36,7 @@ public:
 	int getIndex(std::string l); // возврат индекса пользователя по логину
 	void setUser(); // создание нового пользователя
 	void logIn(); // вход пользователя в систему
-	void logOut(int n); // выход пользователя из чата
+	template<typename T>void logOut(T n); // выход пользователя из чата
 	void userTyping(int i, int j); //  блок ввода сообщения 
 
 	/* массив пользователей */
