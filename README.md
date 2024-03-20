@@ -1,9 +1,54 @@
-# ConsoleChat
-We offer a console chat messenger with the following functionality:
-- user registration - login, password, name"
-- login to chat using login/password
-- sending individual messages to a specific user in a private conversation.
--view individual messages (can only be viewed by the currently authorized user)
-- exchange of messages between all chat users at the same time: by sending messages to the general chat.
-  
- Note: since information is entered by different users from the same keyboard, control is transferred from one user to another through login/password authorization.
+1.	Список участников команды;
+•	Иван Печий 
+•	Павел Крючков 
+•	Георгий Чумарный
+2.	Описание выбранной идеи решения:
+Основная идея - реализация  консольного чат-мессенджера со следующим  функционалом:
+ - регистрация пользователей - логин, пароль, имя.
+ - вход в чат по логину/паролю
+- отправка индивидуальных сообщений конкретному пользователю в личную беседу.
+-просмотр индивидуальных сообщений.
+ (может просмотреть только авторизованный в данный момент пользователь)
+ - обмен сообщениями между всеми пользователями чата одновременно:   посредством направления  сообщений в общий чат.
+
+3.	Описание пользовательских типов:
+class UserList // класс списка пользователей чата
+В нём были реализован следующий  ряд  методов и   функций :
+	/* конструктор объекта динамического массива списка пользователей */UserList(int length, int count) : _length(length), _count(count){}
+	bool authCheck(std::string l, std::string p);
+	int getIndex(std::string l); // возврат индекса пользователя по логину
+	void setUser(); // создание нового пользователя
+	void logIn(); // вход пользователя в систему
+	template<typename T> void logOut(T n){ // выход пользователя из чата
+	void userTyping(int i, int j); //  блок ввода сообщения 
+	/* массив пользователей */
+	void resize(int newLength); // изменение размера объекта массива пользователей
+	void showUsers(); // вывод списка пользователей
+	int getLength(); // возврат количества пользователей (равно размеру массива)
+	/* сообщения */
+	void saveMsg(int _i, int _ir, std::string _m);
+	void getMsgs(int _i, int _ir);
+	void resizeMsgList(int newCount); // изменение размера объекта массива сообщений
+
+class User {// класс пользователя
+В нём были реализован следующий  ряд  методов и   функций:
+	void getUser(); // вывод логина и пароля и статуса	
+	string getLogin(); // возврат логина
+	string getPass(); // возврат пароля
+	setStatus(bool s); // изменение статуса
+	bool getStatus(); // возврат статуса (системный)
+	string statusInfo(); // возврат статуса (читабельный)
+
+class Msg /* класс сообщений */
+В нём были реализован следующий  ряд  методов и   функций:
+		void getPrivate(std::string l, std::string r); // вывод личных сообщений
+		void getGroup(); // вывод групповых сообщений};
+
+4.	Роли: 
+Иван Печий: формирование основной идеи, написание базового кода.
+Павел Крючков: функции и классы, отладка, рефакторинг, работа с Win – версиями, тестирование.
+Георий Чумарный: работа с Win – функции и классы, версиями, тестирование.
+
+
+
+
