@@ -14,21 +14,21 @@
 3.	Описание пользовательских типов:
 class UserList // класс списка пользователей чата
 В нём были реализован следующий  ряд  методов и   функций :
-•	/* конструктор объекта динамического массива списка пользователей */UserList(int length, int count) : _length(length), _count(count){}
-•	bool authCheck(std::string l, std::string p);
-•	int getIndex(std::string l); // возврат индекса пользователя по логину
-•	void setUser(); // создание нового пользователя
-•	void logIn(); // вход пользователя в систему
-•	template<typename T> void logOut(T n){ // выход пользователя из чата
-•	void userTyping(int i, int j); //  блок ввода сообщения 
-•	/* массив пользователей */
-•	void resize(int newLength); // изменение размера объекта массива пользователей
-•	void showUsers(); // вывод списка пользователей
-•	int getLength(); // возврат количества пользователей (равно размеру массива)
-•	/* сообщения */
-•	void saveMsg(int _i, int _ir, std::string _m);
-•	void getMsgs(int _i, int _ir);
-•	void resizeMsgList(int newCount); // изменение размера объекта массива сообщений
+/* конструктор объекта динамического массива списка пользователей */UserList(int length, int count) : _length(length), _count(count){}
+- bool authCheck(std::string l, std::string p);
+- int getIndex(std::string l); // возврат индекса пользователя по логину
+- void setUser(); // создание нового пользователя
+- void logIn(); // вход пользователя в систему
+- template<typename T> void logOut(T n){ // выход пользователя из чата
+- void userTyping(int i, int j); //  блок ввода сообщения 
+/* массив пользователей */
+- void resize(int newLength); // изменение размера объекта массива пользователей
+- void showUsers(); // вывод списка пользователей
+- int getLength(); // возврат количества пользователей (равно размеру массива)
+/* сообщения */
+- void saveMsg(int _i, int _ir, std::string _m);
+- void getMsgs(int _i, int _ir);
+- void resizeMsgList(int newCount); // изменение размера объекта массива сообщений
 
 class User {// класс пользователя
 В нём были реализован следующий  ряд  методов и   функций:
