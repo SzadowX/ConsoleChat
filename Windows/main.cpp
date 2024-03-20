@@ -23,6 +23,7 @@ int main(){
 		cout << "Главное меню: ";
 		char choice;
 		cin >> choice;
+		cin.ignore(256, '\n'); // игнорирование ввода символов после первого
 		
 		switch(choice){
 			case 'r':
