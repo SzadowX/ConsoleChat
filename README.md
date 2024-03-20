@@ -14,7 +14,6 @@
 3.	Описание пользовательских типов:
 class UserList // класс списка пользователей чата
 В нём были реализован следующий  ряд  методов и   функций :
-/* конструктор объекта динамического массива списка пользователей */UserList(int length, int count) : _length(length), _count(count){}
 - bool authCheck(std::string l, std::string p);
 - int getIndex(std::string l); // возврат индекса пользователя по логину
 - void setUser(); // создание нового пользователя
@@ -29,15 +28,14 @@ class UserList // класс списка пользователей чата
 - void saveMsg(int _i, int _ir, std::string _m);
 - void getMsgs(int _i, int _ir);
 - void resizeMsgList(int newCount); // изменение размера объекта массива сообщений
-
 class User {// класс пользователя
 В нём были реализован следующий  ряд  методов и   функций:
-•	void getUser(); // вывод логина и пароля и статуса	
-•	string getLogin(); // возврат логина
-•	string getPass(); // возврат пароля
-•	setStatus(bool s); // изменение статуса
-•	bool getStatus(); // возврат статуса (системный)
-•	string statusInfo(); // возврат статуса (читабельный)
+- void getUser(); // вывод логина и пароля и статуса	
+- string getLogin(); // возврат логина
+- string getPass(); // возврат пароля
+- setStatus(bool s); // изменение статуса
+- bool getStatus(); // возврат статуса (системный)
+- string statusInfo(); // возврат статуса (читабельный)
 
 class Msg /* класс сообщений */
 В нём были реализован следующий  ряд  методов и   функций:
