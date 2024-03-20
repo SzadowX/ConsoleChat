@@ -12,21 +12,21 @@ private:
 	int _length{};
 	User *_userlist{};
 	int _count{};
-	Msg *_groupmsg{};
+	Msg *_msglist{};
 public:
 	
 	/* конструктор объекта динамического массива списка пользователей */
 	
 	UserList(int length, int count) : _length(length), _count(count){
-		_userlist = new User[_length]{};
+		_userlist = new User[_length]{};  // массив пользоваетелей
 		_userlist[0] = User(std::string("admin"),std::string("admin")); // создание одного пользователя (админа)
-		_groupmsg = new Msg[_count]{};
-		_groupmsg[0] = Msg(_userlist[0].getLogin(), std::string("Welcome!"));
+		_msglist = new Msg[_count]{};  // массив сообщений
+		_msglist[0] = Msg(_userlist[0].getLogin(), std::string("Welcome!"));  // приветствие от админа
 	}
 	
 	~UserList(){
 		delete[] _userlist;
-		delete[] _groupmsg;
+		delete[] _msglist;
 	}
 	
 	/* методы класса списка прользователей */
