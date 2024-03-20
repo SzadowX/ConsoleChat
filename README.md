@@ -29,6 +29,7 @@ class UserList // класс списка пользователей чата
 - void saveMsg(int _i, int _ir, std::string _m);
 - void getMsgs(int _i, int _ir);
 - void resizeMsgList(int newCount); // изменение размера объекта массива сообщений  
+
 class User // класс пользователя  
 В нём были реализован следующий  ряд  методов и   функций:
 - void getUser(); // вывод логина и пароля и статуса	
