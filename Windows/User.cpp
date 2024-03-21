@@ -3,7 +3,7 @@
 #include "User.h"
 
 void User::getUser(){ // вывод логина и пароля и статуса
-	std::cout << _login << " " << _pass << " " << statusInfo() << std::endl;
+	std::cout << _login << "\t" << _name << "\t" << statusInfo() << std::endl;
 }
 
 std::string User::getLogin(){ // возврат логина
@@ -29,8 +29,4 @@ std::string User::statusInfo(){ // возврат статуса (читабел
 	else{
 		return std::string("в сети");
 	}	
-}
-
-void User::logOut(){ // выход пользователя из чата
-	_status = false;
 }
