@@ -16,9 +16,11 @@ public:
 	// конструкторы объекта пользователя
 	
 	User(){};
-	User(std::string login, std::string pass){
+	User(std::string login) : _login(login){}; // для наследования логина в Msg
+	User(std::string login, std::string pass, std::string name){
 		_login = login;
 		_pass = pass;
+		_name = name;
 		_status = false;
 	};
 
@@ -33,8 +35,4 @@ public:
 	void setStatus(bool s); // изменение статуса
 	bool getStatus(); // возврат статуса (системный)
 	std::string statusInfo(); // возврат статуса (читабельный)
-	
-	// функции для работы с пользователем
-
-	void logOut(); // выход пользователя из чата
 };
