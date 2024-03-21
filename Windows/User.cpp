@@ -2,7 +2,7 @@
 #include <string>
 #include "User.h"
 
-void User::getUser(){ // вывод логина и пароля и статуса
+void User::getUser(){ // // вывод логина и имени и статуса
 	std::cout << _login << "\t" << _name << "\t" << statusInfo() << std::endl;
 }
 
