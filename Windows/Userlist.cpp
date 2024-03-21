@@ -112,10 +112,10 @@ void UserList::logIn(){ // вход пользователя в систему
 		if(c == "quit"){ // выход из цикла (пользователя из системы)
 			std::cout << "----- Пользователь вышел из чата!\n" << std::endl;
 			logOut<int>(i); // вызов выхода пользователя
-			system("clear");
+			system("cls");
 		}
 		else if(c == "all"){ // переход в групповой чат
-			system("clear");
+			system("cls");
 			ir = -1;
 			std::cout << "---------- Общий диалог ----------" << std::endl;
 			getMsgs(i, ir);
@@ -124,7 +124,7 @@ void UserList::logIn(){ // вход пользователя в систему
 		else{ // переход в лс
 			ir = getIndex(c); // индекс получателя
 			if(ir >= 0){
-				system("clear");
+				system("cls");
 				std::cout << "---------- Собеседник  " << _userlist[ir].getLogin() << " ----------" << std::endl; 
 				getMsgs(i, ir);
 				userTyping(i, ir);
@@ -145,7 +145,7 @@ void UserList::userTyping(int i, int j){ // блок ввода сообщени
 
 		if(msg_body == "quit"){ // выход из цикла (диалога)
 			std::cout << "----- Пользователь вышел из диалога!\n" << std::endl;
-			system("clear");
+			system("cls");
 			break;
 		}
 		else{
