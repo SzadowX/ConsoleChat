@@ -33,7 +33,8 @@ int main(){
 				userList.logIn();
 				break;
 			case 'c':
-				cout << "\nСписок пользователей:\n----------" << endl;
+				system("cls");
+				cout << "Список пользователей:\n----------\nлогин\tимя\tстатус\n";
 				userList.showUsers();
 				cout << "----------\n\n";
 				break;
@@ -41,7 +42,8 @@ int main(){
 				running = false;
 				break;
 			default:
-				cout << "Неверное значение!" << endl;
+				system("cls");
+				cout << "Неверное значение!\n";
 				break;
 		}
 	}
