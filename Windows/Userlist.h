@@ -19,7 +19,7 @@ public:
 	
 	UserList(int length, int count) : _length(length), _count(count){
 		_userlist = new User[_length]{};  // массив пользоваетелей
-		_userlist[0] = User(std::string("admin"),std::string("admin")); // создание одного пользователя (админа)
+		_userlist[0] = User(std::string("admin"),std::string("admin"),std::string ("админ")); // создание одного пользователя (админа)
 		_msglist = new Msg[_count]{};  // массив сообщений
 		_msglist[0] = Msg(_userlist[0].getLogin(), std::string("Welcome!"));  // приветствие от админа
 	}
